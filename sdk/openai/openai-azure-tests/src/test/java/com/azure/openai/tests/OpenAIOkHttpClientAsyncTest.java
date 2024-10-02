@@ -45,9 +45,9 @@ public class OpenAIOkHttpClientAsyncTest extends OpenAIOkHttpClientTestBase {
     private OpenAIOkHttpClientAsync.Builder setAzureServiceApiVersion(
             OpenAIOkHttpClientAsync.Builder clientBuilder, String apiVersion) {
         if (GA.equals(apiVersion)) {
-            AzureOpenAIExtensionsKt.azureOpenAIServiceVersion(clientBuilder, AZURE_OPENAI_SERVICE_VERSION_GA);
+            AzureOpenAIExtensionsKt.serviceVersion(clientBuilder, AZURE_OPENAI_SERVICE_VERSION_GA);
         } else if (PREVIEW.equals(apiVersion)) {
-            AzureOpenAIExtensionsKt.azureOpenAIServiceVersion(clientBuilder, AZURE_OPENAI_SERVICE_VERSION_PREVIEW);
+            AzureOpenAIExtensionsKt.serviceVersion(clientBuilder, AZURE_OPENAI_SERVICE_VERSION_PREVIEW);
         } else {
             throw new IllegalArgumentException("Invalid Azure API version");
         }

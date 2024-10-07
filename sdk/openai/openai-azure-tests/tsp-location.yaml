@@ -1,5 +1,5 @@
 directory: .typespec.azure
 additionalDirectories:
   - .typespec
-commit: 6f57094bd39dd685454c5d1838c2738bdaeeec20
+commit: f91ba932f10e87f9767ba16e1aec643641e0c663
 repo: joseharriaga/openai-in-typespec

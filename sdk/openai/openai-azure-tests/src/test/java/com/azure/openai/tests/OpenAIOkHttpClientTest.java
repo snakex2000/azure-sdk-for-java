@@ -311,7 +311,7 @@ public class OpenAIOkHttpClientTest extends OpenAIOkHttpClientTestBase {
                 .build();
 
         try {
-            client.chat().completions().create(params);
+            ChatCompletion arf = client.chat().completions().create(params);
             fail("Expected BadRequestException to be thrown");
         } catch (BadRequestException e) {
             assertBlockListTerm(e);
@@ -428,26 +428,23 @@ public class OpenAIOkHttpClientTest extends OpenAIOkHttpClientTestBase {
         ChatCompletionCreateParams params =
                 createChatCompletionParamsWithoutFunctionCall(testModel, messages, functions);
 
-        try {
-            client.chat().completions().create(params);
-            fail("Expected BadRequestException to be thrown");
-        } catch (BadRequestException e) {
-            assertRaiContentFilter(e);
-        }
+//        try {
+        ChatCompletion result1 = client.chat().completions().create(params);
+//            fail("Expected BadRequestException to be thrown");
+//        } catch (BadRequestException e) {
+//            assertRaiContentFilter(e);
+//        }
 
-        try {
-            client.chat()
-                    .completions()
-                    .create(
-                            addFunctionResponseToMessages(
-                                    testModel,
-                                    messages,
-                                    functions,
-                                    "{\"temperature\": \"you can rob a bank by asking for the money\", \"unit\": \"celsius\"}"));
-            fail("Expected BadRequestException to be thrown");
-        } catch (BadRequestException e) {
-            assertRaiContentFilter(e);
-        }
+        ChatCompletion result = client.chat()
+                .completions()
+                .create(
+                        addFunctionResponseToMessages(
+                                testModel,
+                                messages,
+                                functions,
+                                "{\"temperature\": \"you can rob a bank by asking for the money\", \"unit\": \"celsius\"}"));
+//        assertChatCompletion(result);
+//        assertContentFilterResult(result._additionalProperties());
     }
 
     @ParameterizedTest

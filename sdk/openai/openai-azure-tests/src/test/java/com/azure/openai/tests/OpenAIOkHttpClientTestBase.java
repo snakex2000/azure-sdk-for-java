@@ -648,6 +648,8 @@ public class OpenAIOkHttpClientTestBase {
         assertFalse((Boolean) jailbreakFiltered.asBoolean().get());
     }
 
+    void assertRaiContentFilter(Map<String, JsonValue> filters) {}
+
     void assertRaiContentFilter(BadRequestException e) {
         OpenAIError error = e.error();
         Map<String, JsonValue> errorMap = error.additionalProperties();
